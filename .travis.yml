@@ -1,0 +1,21 @@
+os: linux
+language: python
+
+addons:
+  apt:
+    packages:
+    - e2fsprogs
+
+script:
+  - python -V
+  - python setup.py bdist_wheel --universal
+  - ./maketest.sh
+  - ./test.sh
+
+matrix:
+  include:
+    - python: "3.4"
+    - python: "3.5"
+    - python: "3.6"
+    - python: "3.7"
+    - python: "3.8"
